@@ -156,7 +156,7 @@ Ext.define('MyApp.view.main.CreateAccount', {
                     allowBlank: false,
                     required: true,
                     fieldLabel: 'Password',
-                    name: 'pass',
+                    name: 'password',
                     placeholder: 'password',
                     msgTarget: 'qtip',
                     margin: "40 0 0 0",

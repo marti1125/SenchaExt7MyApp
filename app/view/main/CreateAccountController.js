@@ -14,7 +14,24 @@ Ext.define('MyApp.view.main.CreateAccountController', {
 
         if (form.isValid()) {
             console.log(form.getValues());
-            Ext.Msg.alert('Registration Successful', 'You have successfully registered!');
+            Ext.Ajax.request({
+                url: 'https://reqres.in/api/register',
+                headers: {
+                    'x-api-key': '<API_KEY>'
+                },
+                method: 'POST',
+                jsonData: form.getValues(),
+                success: function(response) {
+                    var data = Ext.decode(response.responseText);
+                    console.log(data);
+                    Ext.Msg.alert('Registration Successful', 'You have successfully registered!');
+                },
+                failure: function(response) {
+                    var data = Ext.decode(response.responseText);
+                    console.log(data);
+                    Ext.Msg.alert('Registration Failure', 'Please check for form errors and retry.');
+                }
+            });            
         }
         else {
             Ext.Msg.alert('Registration Failure', 'Please check for form errors and retry.');
