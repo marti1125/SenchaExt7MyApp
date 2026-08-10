@@ -3,7 +3,7 @@
  * "mainView" property. That setting automatically applies the "viewport"
  * plugin causing this view to become the body element (i.e., the viewport).
  *
- * TODO - Replace this content of this view to suite the needs of your application.
+ * TODO - Replace this content of this view to suit the needs of your application.
  */
 Ext.define('MyApp.view.main.Main', {
     extend: 'Ext.tab.Panel',
@@ -18,7 +18,13 @@ Ext.define('MyApp.view.main.Main', {
         'MyApp.view.main.List',
 
         'MyApp.view.main.CreateAccount',
-        'MyApp.view.main.CreateAccountController'
+        'MyApp.view.main.CreateAccountController',
+
+        'MyApp.view.song.CreateSong',
+        'MyApp.view.song.CreateSongController',
+        'MyApp.view.song.GridSong',
+        'MyApp.view.song.GridSongController',
+        'MyApp.store.Song',
     ],
 
     controller: 'main',
@@ -78,35 +84,23 @@ Ext.define('MyApp.view.main.Main', {
     },
 
     items: [{
-        title: 'Home',
-        iconCls: 'fa-home',
-        // The following grid shares a store with the classic version's grid as well!
-        items: [{
-            xtype: 'mainlist'
-        }]
-    }, {
-        title: 'Users',
-        iconCls: 'fa-user',
-        bind: {
-            html: '{loremIpsum}'
-        }
-    }, {
-        title: 'Groups',
-        iconCls: 'fa-users',
-        bind: {
-            html: '{loremIpsum}'
-        }
-    }, {
-        title: 'Settings',
-        iconCls: 'fa-cog',
-        bind: {
-            html: '{loremIpsum}'
-        }
-    }, {
         title: 'Create Account',
         iconCls: 'fa-user-plus',
         items: [{
             xtype: 'create-account'
+        }]
+    }, {
+        title: 'Song',
+        iconCls: 'fa-music',
+        items: [{
+            xtype: 'tabpanel',
+            items: [{
+                title: 'All Songs',
+                xtype: 'grid-song'
+            },{
+                title: 'Song',
+                xtype: 'create-song'
+            }]
         }]
     }]
 });

@@ -3,3 +3,12 @@
  *  styling should be located the view's corresponding scss file.
  */
 $enable-font-awesome: dynamic(true);
+
+.song-action-edit {
+	color: #1976d2;
+	margin-right: 14px;
+}
+
+.song-action-delete {
+	color: #c62828;
+}

@@ -11,34 +11,6 @@ Ext.define('MyApp.view.main.CreateAccount', {
             margin: '40 0 0 0',
             marginAccount: '4 0 0 0',
             buttonHeight: 30
-        },
-        'classic-material': {
-            width: 340,
-            height: 674,
-            margin: (Ext.isIE || Ext.isEdge) ? '10 0 0 0' : '25 0 0 0',
-            marginAccount: '4 0 0 0',
-            buttonHeight: 30
-        },
-        'crisp-touch': {
-            width: 340,
-            height: 674,
-            margin: '30 0 0 0',
-            marginAccount: '4 0 0 0',
-            buttonHeight: 30
-        },
-        'neptune-touch': {
-            width: 340,
-            height: 674,
-            margin: '30 0 0 0',
-            marginAccount: '4 0 0 0',
-            buttonHeight: 30
-        },
-        graphite: {
-            width: 340,
-            height: 674,
-            margin: '15 0 0 0',
-            marginAccount: '0 0 0 0',
-            buttonHeight: 50
         }
     },
     width: 340,
@@ -109,22 +81,6 @@ Ext.define('MyApp.view.main.CreateAccount', {
                     name: 'name',
                     width: 280,
                     placeholder: 'Name',
-                    msgTarget: 'qtip',
-                    margin: "40 0 0 0",
-                    responsiveConfig: {
-                        'desktop': {
-                            msgTarget: 'side'
-                        }
-                    }
-                },
-                {
-                    xtype: 'textfield',
-                    allowBlank: false,
-                    required: true,
-                    width: 280,
-                    fieldLabel: 'Organization',
-                    name: 'organization',
-                    placeholder: 'Organization',
                     msgTarget: 'qtip',
                     margin: "40 0 0 0",
                     responsiveConfig: {

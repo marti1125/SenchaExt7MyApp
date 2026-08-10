@@ -24,6 +24,14 @@ Ext.define('MyApp.view.main.CreateAccountController', {
                 success: function(response) {
                     var data = Ext.decode(response.responseText);
                     console.log(data);
+                    form.reset();
+
+                    if (errorCmp) {
+                        errorCmp.setData({
+                            errors: []
+                        });
+                    }
+
                     Ext.Msg.alert('Registration Successful', 'You have successfully registered!');
                 },
                 failure: function(response) {
