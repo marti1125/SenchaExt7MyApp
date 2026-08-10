@@ -2,6 +2,31 @@ Ext.define('MyApp.view.song.GridSongController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.grid-song',
 
+    init: function() {
+        var me = this,
+            grid = me.getView();
+        
+        grid.on('activate', function() {
+            me.resetCreateUpdateSongForm();
+        });
+    },
+
+    resetCreateUpdateSongForm: function() {
+        var me = this,
+            songTabs = me.getView().up('tabpanel'),
+            createUpdateSongView = songTabs ? songTabs.down('create-update-song') : null,
+            formPanel = createUpdateSongView ? createUpdateSongView.down('form[reference=formCreateUpdateSong]') : null,
+            submitButton = createUpdateSongView ? createUpdateSongView.lookupReference('createUpdateSongSubmitButton') : null;
+        
+        if (formPanel) {
+            formPanel.getForm().reset();
+        }
+        
+        if (submitButton) {
+            submitButton.setText('CREATE SONG');
+        }
+    },
+
     onDelete: function(grid, rowIndex, colIndex) {
         var rec = grid.getStore().getAt(rowIndex);
 
@@ -30,7 +55,7 @@ Ext.define('MyApp.view.song.GridSongController', {
     onEdit: function(grid, rowIndex, colIndex) {
         var rec = grid.getStore().getAt(rowIndex),
             songTabs = grid.up('tabpanel'),
-            createSongView,
+            createUpdateSongView,
             formPanel,
             submitButton;
 
@@ -39,13 +64,13 @@ Ext.define('MyApp.view.song.GridSongController', {
             return;
         }
 
-        createSongView = songTabs.down('create-song');
-        if (!createSongView) {
+        createUpdateSongView = songTabs.down('create-update-song');
+        if (!createUpdateSongView) {
             Ext.Msg.alert('Edit', 'Create Song panel was not found.');
             return;
         }
 
-        formPanel = createSongView.down('form[reference=formCreateSong]');
+        formPanel = createUpdateSongView.down('form[reference=formCreateUpdateSong]');
         if (formPanel) {
             formPanel.getForm().setValues({
                 id: rec.get('id'),
@@ -56,12 +81,12 @@ Ext.define('MyApp.view.song.GridSongController', {
             });
         }
 
-        submitButton = createSongView.lookupReference('createSongSubmitButton');
+        submitButton = createUpdateSongView.lookupReference('createUpdateSongSubmitButton');
         if (submitButton) {
             submitButton.setText('UPDATE SONG');
         }
 
-        songTabs.setActiveTab(createSongView);
+        songTabs.setActiveTab(createUpdateSongView);
     },
 
 });

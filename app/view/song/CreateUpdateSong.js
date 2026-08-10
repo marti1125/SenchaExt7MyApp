@@ -1,7 +1,7 @@
-Ext.define('MyApp.view.song.CreateSong', {
+Ext.define('MyApp.view.song.CreateUpdateSong', {
     extend: 'Ext.Container',
-    xtype: 'create-song',
-    controller: 'create-song',
+    xtype: 'create-update-song',
+    controller: 'create-update',
 
     autoSize: true,
     width: 340,
@@ -16,7 +16,7 @@ Ext.define('MyApp.view.song.CreateSong', {
             xtype: 'form',
             width: 340,
             height: 644,
-            reference: 'formCreateSong',
+            reference: 'formCreateUpdateSong',
             bodyPadding: 30,
             items: [
                 {
@@ -75,10 +75,10 @@ Ext.define('MyApp.view.song.CreateSong', {
                 },
                 {
                     xtype: 'button',
-                    reference: 'createSongSubmitButton',
+                    reference: 'createUpdateSongSubmitButton',
                     text: 'CREATE SONG',
                     autoSize: true,
-                    handler: 'onCreateSong',
+                    handler: 'onCreateUpdateSong',
                     height: 30,
                     width: 280,
                     margin: '30 0 0 0',

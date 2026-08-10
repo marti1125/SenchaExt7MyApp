@@ -20,8 +20,8 @@ Ext.define('MyApp.view.main.Main', {
         'MyApp.view.main.CreateAccount',
         'MyApp.view.main.CreateAccountController',
 
-        'MyApp.view.song.CreateSong',
-        'MyApp.view.song.CreateSongController',
+        'MyApp.view.song.CreateUpdateSong',
+        'MyApp.view.song.CreateUpdateController',
         'MyApp.view.song.GridSong',
         'MyApp.view.song.GridSongController',
         'MyApp.store.Song',
@@ -99,7 +99,7 @@ Ext.define('MyApp.view.main.Main', {
                 xtype: 'grid-song'
             },{
                 title: 'Song',
-                xtype: 'create-song'
+                xtype: 'create-update-song'
             }]
         }]
     }]

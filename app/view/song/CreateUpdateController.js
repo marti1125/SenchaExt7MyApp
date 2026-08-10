@@ -1,13 +1,13 @@
-Ext.define('MyApp.view.song.CreateSongController', {
+Ext.define('MyApp.view.song.CreateUpdateController', {
     extend: 'Ext.app.ViewController',
-    alias: 'controller.create-song',
+    alias: 'controller.create-update',
 
-    onCreateSong: function() {
+    onCreateUpdateSong: function() {
         var me = this,
-            errorCmp = me.lookup('formCreateSongFailure'),
-            submitButton = me.lookup('createSongSubmitButton'),
+            errorCmp = me.lookup('formCreateUpdateSongFailure'),
+            submitButton = me.lookup('createUpdateSongSubmitButton'),
             fields,
-            form = me.lookup('formCreateSong').getForm(),
+            form = me.lookup('formCreateUpdateSong').getForm(),
             values = form.getValues(),
             songId = values.id,
             isEdit = !!songId,
