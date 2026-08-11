@@ -4,6 +4,7 @@ Ext.define('MyApp.model.Song', {
         'Ext.data.proxy.Rest'
     ],
     fields: [
+        { name: 'id', type: 'int' },
         { name: 'title' },
         { name: 'minutes', type: 'int' },
         { name: 'seconds', type: 'int' },

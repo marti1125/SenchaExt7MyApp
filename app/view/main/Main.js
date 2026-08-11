@@ -32,6 +32,12 @@ Ext.define('MyApp.view.main.Main', {
         'MyApp.view.album.CreateUpdateAlbumController',
         'MyApp.view.album.GridAlbum',
         'MyApp.view.album.GridAlbumController',
+
+        'MyApp.store.Artist',
+        'MyApp.view.artist.GridArtist',
+        'MyApp.view.artist.GridArtistController',
+        'MyApp.view.artist.CreateUpdateArtist',
+        'MyApp.view.artist.CreateUpdateArtistController'
     ],
 
     controller: 'main',
@@ -91,12 +97,6 @@ Ext.define('MyApp.view.main.Main', {
     },
 
     items: [{
-        title: 'Create Account',
-        iconCls: 'fa-user-plus',
-        items: [{
-            xtype: 'create-account'
-        }]
-    }, {
         title: 'Song',
         iconCls: 'fa-music',
         items: [{
@@ -121,6 +121,25 @@ Ext.define('MyApp.view.main.Main', {
                 title: 'Album',
                 xtype: 'create-update-album'
             }]
+        }]
+    }, {
+        title: 'Artist',
+        iconCls: 'fa-user',
+        items: [{
+            xtype: 'tabpanel',
+            items: [{
+                title: 'All Artists',
+                xtype: 'grid-artist'
+            }, {
+                title: 'Artist',
+                xtype: 'create-update-artist'
+            }]
+        }]
+    }, {
+        title: 'Create Account',
+        iconCls: 'fa-user-plus',
+        items: [{
+            xtype: 'create-account'
         }]
     }]
 });
