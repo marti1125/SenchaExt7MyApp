@@ -1,7 +1,7 @@
-Ext.define('MyApp.view.song.CreateUpdateSong', {
+Ext.define('MyApp.view.album.CreateUpdateAlbum', {
     extend: 'Ext.Container',
-    xtype: 'create-update-song',
-    controller: 'create-update-song',
+    xtype: 'create-update-album',
+    controller: 'create-update-album',
 
     autoSize: true,
     width: 340,
@@ -16,7 +16,7 @@ Ext.define('MyApp.view.song.CreateUpdateSong', {
             xtype: 'form',
             width: 340,
             height: 644,
-            reference: 'formCreateUpdateSong',
+            reference: 'formCreateUpdateAlbum',
             bodyPadding: 30,
             items: [
                 {
@@ -27,7 +27,7 @@ Ext.define('MyApp.view.song.CreateUpdateSong', {
                     xtype: 'component',
                     margin: '15 0 15 0',
                     width: 280,
-                    html: 'Song',
+                    html: 'Album',
                     style: {
                         'font-size': '22px',
                         'text-align': 'center'
@@ -45,40 +45,44 @@ Ext.define('MyApp.view.song.CreateUpdateSong', {
                     xtype: 'numberfield',
                     allowBlank: false,
                     required: true,
-                    fieldLabel: 'Minutes',
-                    name: 'minutes',
-                    placeholder: 'Minutes',
+                    fieldLabel: 'Year',
+                    name: 'year',
+                    placeholder: 'Year',
                     value: 0,
                     minValue: 0,
-                    maxValue: 59,
-                    allowDecimals: false
-                },
-                {
-                    xtype: 'numberfield',
-                    allowBlank: false,
-                    required: true,
-                    fieldLabel: 'Seconds',
-                    name: 'seconds',
-                    placeholder: 'Seconds',
-                    value: 0,
-                    minValue: 0,
-                    maxValue: 59,
+                    maxValue: new Date().getFullYear(),
                     allowDecimals: false
                 },
                 {
                     xtype: 'textfield',
                     allowBlank: false,
                     required: true,
-                    fieldLabel: 'Composer',
-                    name: 'composer',
-                    placeholder: 'Composer'
+                    fieldLabel: 'Description',
+                    name: 'description',
+                    placeholder: 'Description'
+                },
+                {
+                    xtype: 'combobox',
+                    reference: 'value',
+                    publishes: 'value',
+                    fieldLabel: 'Select Medium',
+                    displayField: 'value',
+                    forceSelection: true,
+                    valueField: 'id',
+                    displayField: 'value',
+                    store: {
+                        type: 'medium'
+                    },
+                    minChars: 0,
+                    queryMode: 'local',
+                    name: 'medium',
                 },
                 {
                     xtype: 'button',
-                    reference: 'createUpdateSongSubmitButton',
-                    text: 'CREATE SONG',
+                    reference: 'createUpdateAlbumSubmitButton',
+                    text: 'CREATE ALBUM',
                     autoSize: true,
-                    handler: 'onCreateUpdateSong',
+                    handler: 'onCreateUpdateAlbum',
                     height: 30,
                     width: 280,
                     margin: '30 0 0 0',

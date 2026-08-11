@@ -1,16 +1,16 @@
-Ext.define('MyApp.view.song.CreateUpdateController', {
+Ext.define('MyApp.view.album.CreateUpdateAlbumController', {
     extend: 'Ext.app.ViewController',
-    alias: 'controller.create-update-song',
+    alias: 'controller.create-update-album',
 
-    onCreateUpdateSong: function() {
+    onCreateUpdateAlbum: function() {
         var me = this,
-            errorCmp = me.lookup('formCreateUpdateSongFailure'),
-            submitButton = me.lookup('createUpdateSongSubmitButton'),
+            errorCmp = me.lookup('formCreateUpdateAlbumErrors'),
+            submitButton = me.lookup('createUpdateAlbumSubmitButton'),
             fields,
-            form = me.lookup('formCreateUpdateSong').getForm(),
+            form = me.lookup('formCreateUpdateAlbum').getForm(),
             values = form.getValues(),
-            songId = values.id,
-            isEdit = !!songId,
+            albumId = values.id,
+            isEdit = !!albumId,
             payload,
             errors = [],
             data = {
@@ -23,19 +23,19 @@ Ext.define('MyApp.view.song.CreateUpdateController', {
 
             console.log(values);
             Ext.Ajax.request({
-                url: isEdit ? ('http://127.0.0.1:8000/songs/' + songId + '/') : 'http://127.0.0.1:8000/songs/',
+                url: isEdit ? ('http://127.0.0.1:8000/albums/' + albumId + '/') : 'http://127.0.0.1:8000/albums/',
                 method: isEdit ? 'PUT' : 'POST',
                 jsonData: payload,
                 success: function(response) {
-                    var songTabs = me.getView().up('tabpanel'),
-                        songGrid = songTabs ? songTabs.down('grid-song') : null,
+                    var albumTabs = me.getView().up('tabpanel'),
+                        albumGrid = albumTabs ? albumTabs.down('grid-album') : null,
                         responseData = response.responseText ? Ext.decode(response.responseText) : null;
 
                     console.log(responseData);
                     form.reset();
 
                     if (submitButton) {
-                        submitButton.setText('CREATE SONG');
+                        submitButton.setText('CREATE ALBUM');
                     }
 
                     if (errorCmp) {
@@ -44,25 +44,25 @@ Ext.define('MyApp.view.song.CreateUpdateController', {
                         });
                     }
 
-                    if (songGrid) {
-                        songGrid.getStore().reload();
-                        if (songTabs) {
-                            songTabs.setActiveTab(songGrid);
+                    if (albumGrid) {
+                        albumGrid.getStore().reload();
+                        if (albumTabs) {
+                            albumTabs.setActiveTab(albumGrid);
                         }
                     }
 
-                    Ext.Msg.alert(isEdit ? 'Update Song Successful' : 'Create Song Successful', isEdit ? 'You have successfully updated the song!' : 'You have successfully created the song!');
+                    Ext.Msg.alert(isEdit ? 'Update Album Successful' : 'Create Album Successful', isEdit ? 'You have successfully updated the album!' : 'You have successfully created the album!');
                 },
                 failure: function(response) {
                     var responseData = response.responseText ? Ext.decode(response.responseText) : null;
 
                     console.log(responseData);
-                    Ext.Msg.alert(isEdit ? 'Update Song Failure' : 'Create Song Failure', 'Please check for form errors and retry.');
+                    Ext.Msg.alert(isEdit ? 'Update Album Failure' : 'Create Album Failure', 'Please check for form errors and retry.');
                 }
             });
         }
         else {
-            Ext.Msg.alert(isEdit ? 'Update Song Failure' : 'Create Song Failure', 'Please check for form errors and retry.');
+            Ext.Msg.alert(isEdit ? 'Update Album Failure' : 'Create Album Failure', 'Please check for form errors and retry.');
             fields = form.getFields();
 
             fields.each(function(field) {
