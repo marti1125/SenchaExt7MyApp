@@ -29,9 +29,6 @@ Ext.define('MyApp.view.main.Main', {
         'MyApp.view.album_song.CreateUpdateAlbumSongController'
     ],
 
-    controller: 'main',
-    viewModel: 'main',
-
     ui: 'navigation',
 
     tabBarHeaderPosition: 1,
@@ -43,9 +40,7 @@ Ext.define('MyApp.view.main.Main', {
             align: 'stretchmax'
         },
         title: {
-            bind: {
-                text: '{name}'
-            },
+            text: 'Dummy App',
             flex: 0
         },
         iconCls: 'fa-th-list'
