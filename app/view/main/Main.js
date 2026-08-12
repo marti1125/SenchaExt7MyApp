@@ -1,10 +1,3 @@
-/**
- * This class is the main view for the application. It is specified in app.js as the
- * "mainView" property. That setting automatically applies the "viewport"
- * plugin causing this view to become the body element (i.e., the viewport).
- *
- * TODO - Replace this content of this view to suit the needs of your application.
- */
 Ext.define('MyApp.view.main.Main', {
     extend: 'Ext.tab.Panel',
     xtype: 'app-main',
@@ -12,13 +5,6 @@ Ext.define('MyApp.view.main.Main', {
     requires: [
         'Ext.plugin.Viewport',
         'Ext.window.MessageBox',
-
-        'MyApp.view.main.MainController',
-        'MyApp.view.main.MainModel',
-        'MyApp.view.main.List',
-
-        'MyApp.view.main.CreateAccount',
-        'MyApp.view.main.CreateAccountController',
 
         'MyApp.store.Song',
         'MyApp.view.song.CreateUpdateSong',
@@ -147,12 +133,6 @@ Ext.define('MyApp.view.main.Main', {
                 title: 'Album Song',
                 xtype: 'create-update-album-song'
             }]
-        }]
-    }, {
-        title: 'Create Account',
-        iconCls: 'fa-user-plus',
-        items: [{
-            xtype: 'create-account'
         }]
     }]
 });
