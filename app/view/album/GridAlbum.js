@@ -4,9 +4,16 @@ Ext.define('MyApp.view.album.GridAlbum', {
     controller: 'grid-album',
 
     requires: [
+        'Ext.grid.filters.Filters',
         'Ext.grid.column.Action',
         'MyApp.store.Album'
     ],
+
+    plugins: {
+        gridfilters: true
+    },
+
+    emptyText: 'No Matching Records',
 
     title: 'Albums',
     width: 750,
@@ -24,19 +31,31 @@ Ext.define('MyApp.view.album.GridAlbum', {
     columns: [{
         text: 'Title',
         flex: 1,
-        dataIndex: 'title'
+        dataIndex: 'title',
+        filter : {
+            type: 'string'
+        }
     }, {
         text: 'Year',
         width: 95,
-        dataIndex: 'year'
+        dataIndex: 'year',
+        filter: {
+            type: 'number'
+        }
     }, {
         text: 'Description',
         width: 200,
-        dataIndex: 'description'
+        dataIndex: 'description',
+        filter: {
+            type: 'string'
+        }
     }, {
         text: 'Medium',
         flex: 1,
-        dataIndex: 'medium_name'
+        dataIndex: 'medium_name',
+        filter: {
+            type: 'string'
+        }
     }, {
         xtype: 'actioncolumn',
         width: 150,

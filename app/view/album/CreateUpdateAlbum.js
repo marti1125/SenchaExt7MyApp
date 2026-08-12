@@ -4,8 +4,6 @@ Ext.define('MyApp.view.album.CreateUpdateAlbum', {
     controller: 'create-update-album',
 
     autoSize: true,
-    width: 340,
-    height: 674,
     layout: {
         type: 'hbox',
         align: 'middle'
@@ -15,9 +13,15 @@ Ext.define('MyApp.view.album.CreateUpdateAlbum', {
         {
             xtype: 'form',
             width: 340,
-            height: 644,
+            height: 350,
             reference: 'formCreateUpdateAlbum',
             bodyPadding: 30,
+            style: {
+                'margin-top': '25px',
+                'border': '1px solid #ccc',
+                'background-color': '#f5f5f5',
+                'border-radius': '10px'
+            },
             items: [
                 {
                     xtype: 'hiddenfield',

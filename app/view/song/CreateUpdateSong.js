@@ -4,8 +4,6 @@ Ext.define('MyApp.view.song.CreateUpdateSong', {
     controller: 'create-update-song',
 
     autoSize: true,
-    width: 340,
-    height: 674,
     layout: {
         type: 'hbox',
         align: 'middle'
@@ -15,14 +13,16 @@ Ext.define('MyApp.view.song.CreateUpdateSong', {
         {
             xtype: 'form',
             width: 340,
-            height: 644,
+            height: 370,
             reference: 'formCreateUpdateSong',
             bodyPadding: 30,
-            items: [
-                {
-                    xtype: 'hiddenfield',
-                    name: 'id'
-                },
+            style: {
+                'margin-top': '25px',
+                'border': '1px solid #ccc',
+                'background-color': '#f5f5f5',
+                'border-radius': '10px'
+            },
+            items: [                
                 {
                     xtype: 'component',
                     margin: '15 0 15 0',
@@ -87,6 +87,10 @@ Ext.define('MyApp.view.song.CreateUpdateSong', {
                         'letter-spacing': '1.25px',
                         'font-size': '14px'
                     }
+                },
+                {
+                    xtype: 'hiddenfield',
+                    name: 'id'
                 }
             ]
         }
