@@ -5,12 +5,13 @@ Ext.define('MyApp.view.artist.GridArtist', {
 
     requires: [
         'Ext.grid.column.Action',
+        'Ext.grid.feature.Grouping',
         'MyApp.store.Artist'
     ],
 
     title: 'Artists',
     width: 750,
-    height: 350,
+    height: 550,
 
     store: {
         type: 'artist'
@@ -21,6 +22,11 @@ Ext.define('MyApp.view.artist.GridArtist', {
     stateId: 'stateGrid',
     headerBorders: false,
 
+    features: [{
+        ftype: 'grouping',
+        groupHeaderTpl: '{name} ({rows.length})'
+    }],
+
     columns: [{
         text: 'Name',
         flex: 1,
@@ -29,10 +35,6 @@ Ext.define('MyApp.view.artist.GridArtist', {
         text: 'Curiosity Text',
         width: 200,
         dataIndex: 'curiosity_text'
-    }, {
-        text: 'Song Title',
-        flex: 1,
-        dataIndex: 'song_title'
     }, {
         xtype: 'actioncolumn',
         width: 150,
