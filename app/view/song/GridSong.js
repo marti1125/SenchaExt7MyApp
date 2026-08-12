@@ -1,5 +1,5 @@
 Ext.define('MyApp.view.song.GridSong', {
-    extend: 'Ext.grid.Panel',
+    extend: 'Ext.tree.Panel',
     xtype: 'grid-song',
     controller: 'grid-song',
 
@@ -12,27 +12,37 @@ Ext.define('MyApp.view.song.GridSong', {
     width: 750,
     height: 350,
 
-    store: {
-        type: 'song'
+    viewConfig: {
+        deferEmptyText: false,
+        emptyText: 'No hay canciones disponibles',
+        markDirty: false,
+        listeners: {
+            // Se ejecuta cuando la vista refresca el HTML
+            refresh: function(view) {
+                console.log('%c[DEBUG VISTA] --> El HTML de la tabla se ha REFRESCO.', 'color: purple; font-weight: bold;');
+                console.log('[DEBUG VISTA] Cantidad de filas HTML renderizadas:', view.getNodes().length);
+            },
+            // Nos avisa si la vista detecta que el Store se vació o cargó
+            itemadd: function(records) {
+                console.log('[DEBUG VISTA] Se añadieron elementos visuales a la tabla:', records.length);
+            }
+        }
     },
-    stateful: true,
-    collapsible: true,
-    multiSelect: true,
-    stateId: 'stateGrid',
-    headerBorders: false,
+
+    store: Ext.create('MyApp.store.Song'),
+
+    rootVisible: false,
+    useArrows: true,
 
     columns: [{
+        xtype: 'treecolumn',
         text: 'Title',
         flex: 1,
-        dataIndex: 'title'
+        dataIndex: 'text',
     }, {
-        text: 'Minutes',
+        text: 'Duration',
         width: 95,
-        dataIndex: 'minutes'
-    }, {
-        text: 'Seconds',
-        width: 80,
-        dataIndex: 'seconds'
+        dataIndex: 'duration'
     }, {
         text: 'Composer',
         flex: 1,
@@ -43,13 +53,36 @@ Ext.define('MyApp.view.song.GridSong', {
         menuDisabled: true,
         sortable: false,
         items: [{
-            iconCls: 'x-fa fa-edit song-action-edit',
             tooltip: 'Edit',
-            handler: 'onEdit'
+            handler: 'onEdit',
+            getClass: function(v, meta, record) {
+                if (record.isLeaf()) {
+                    return 'x-hidden-display';
+                }
+                return 'x-fa fa-edit song-action-edit'; 
+            }
         }, {
-            iconCls: 'x-fa fa-trash song-action-delete',
             tooltip: 'Delete',
-            handler: 'onDelete'
+            handler: 'onDelete',
+            getClass: function(v, meta, record) {
+                if (record.isLeaf()) {
+                    return 'x-hidden-display';
+                }
+                return 'x-fa fa-trash song-action-delete';
+            }
         }]
     }],
+
+    listeners: {
+        // Se ejecuta cuando el árbol ya se montó en pantalla
+        afterrender: function(tree) {
+            console.log('%c[DEBUG VISTA] Panel del árbol renderizado en el DOM.', 'color: #9C27B0;');
+            console.log('[DEBUG VISTA] ¿El árbol está visible físicamente?:', tree.isVisible());
+            console.log('[DEBUG VISTA] Altura calculada por ExtJS:', tree.getHeight());
+        },
+        // Se ejecuta si cambia el tamaño o el layout por culpa del contenedor padre
+        resize: function(tree, width, height) {
+            console.log('[DEBUG VISTA] El árbol cambió de tamaño. Ancho:', width, 'Alto:', height);
+        }
+    }
 });

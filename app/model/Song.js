@@ -1,22 +1,16 @@
 Ext.define('MyApp.model.Song', {
-    extend: 'Ext.data.Model',
-    requires: [
-        'Ext.data.proxy.Rest'
-    ],
+    extend: 'Ext.data.TreeModel',
+
     fields: [
-        { name: 'id', type: 'int' },
-        { name: 'title' },
+        { name: 'id', type: 'auto' },
+        { name: 'title', type: 'string' },
         { name: 'minutes', type: 'int' },
         { name: 'seconds', type: 'int' },
-        { name: 'composer' },
+        { name: 'duration', type: 'string' },
+        { name: 'composer', type: 'string' },
+        { name: 'text', type: 'string' },
+        { name: 'leaf', type: 'boolean' }
     ],
 
-    proxy: {
-        type: 'ajax',
-        reader: {
-            type: 'json'
-        },
-        url: 'http://127.0.0.1:8000/songs/'
-    },
-
+    idProperty: 'id'
 });

@@ -55,8 +55,8 @@ Ext.define('MyApp.view.album.CreateUpdateAlbum', {
                 },
                 {
                     xtype: 'textfield',
-                    allowBlank: false,
-                    required: true,
+                    allowBlank: true,
+                    required: false,
                     fieldLabel: 'Description',
                     name: 'description',
                     placeholder: 'Description'

@@ -4,6 +4,7 @@ Ext.define('MyApp.model.Album', {
         'Ext.data.proxy.Rest'
     ],
     fields: [
+        { name: 'id', type: 'int' },
         { name: 'title' },
         { name: 'year', type: 'int' },
         { name: 'description' },
