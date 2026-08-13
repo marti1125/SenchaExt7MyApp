@@ -10,16 +10,22 @@ Ext.define('MyApp.view.main.Main', {
         'MyApp.view.song.CreateUpdateSong',
         'MyApp.view.song.CreateUpdateController',
         'MyApp.view.song.GridSong',
-        'MyApp.view.song.GridSongController',        
+        'MyApp.view.song.GridSongController',
+        'MyApp.view.song.SearchSong',
+        'MyApp.view.song.SearchSongController',      
 
         'MyApp.store.Medium',
         'MyApp.store.Album',
+        'MyApp.view.album.SearchAlbum',
+        'MyApp.view.album.SearchAlbumController',
         'MyApp.view.album.CreateUpdateAlbum',
         'MyApp.view.album.CreateUpdateAlbumController',
         'MyApp.view.album.GridAlbum',
         'MyApp.view.album.GridAlbumController',
 
         'MyApp.store.Artist',
+        'MyApp.view.artist.SearchArtist',
+        'MyApp.view.artist.SearchArtistController',
         'MyApp.view.artist.GridArtist',
         'MyApp.view.artist.GridArtistController',
         'MyApp.view.artist.CreateUpdateArtist',
@@ -84,6 +90,8 @@ Ext.define('MyApp.view.main.Main', {
         title: 'Song',
         iconCls: 'fa-music',
         items: [{
+            xtype: 'search-song'
+        }, {
             xtype: 'tabpanel',
             items: [{
                 title: 'All Songs',
@@ -97,6 +105,8 @@ Ext.define('MyApp.view.main.Main', {
         title: 'Album',
         iconCls: 'fa-book',
         items: [{
+            xtype: 'search-album'
+        },{
             xtype: 'tabpanel',
             items: [{
                 title: 'All Albums',
@@ -110,6 +120,8 @@ Ext.define('MyApp.view.main.Main', {
         title: 'Artist',
         iconCls: 'fa-user',
         items: [{
+            xtype: 'search-artist'
+        }, {
             xtype: 'tabpanel',
             items: [{
                 title: 'All Artists',
