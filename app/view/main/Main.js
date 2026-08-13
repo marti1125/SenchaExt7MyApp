@@ -31,8 +31,8 @@ Ext.define('MyApp.view.main.Main', {
         'MyApp.view.artist.CreateUpdateArtist',
         'MyApp.view.artist.CreateUpdateArtistController',
 
-        'MyApp.view.album_song.CreateUpdateAlbumSong',
-        'MyApp.view.album_song.CreateUpdateAlbumSongController'
+        'MyApp.view.album_song.GridEditAlbumSong',
+        'MyApp.view.album_song.GridEditAlbumSongController'
     ],
 
     ui: 'navigation',
@@ -138,7 +138,7 @@ Ext.define('MyApp.view.main.Main', {
             xtype: 'tabpanel',
             items: [{
                 title: 'Album Song',
-                xtype: 'create-update-album-song'
+                xtype: 'grid-editalbumsong'
             }]
         }]
     }]
